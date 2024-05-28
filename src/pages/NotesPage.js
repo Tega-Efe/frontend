@@ -1,10 +1,113 @@
+// import React, { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
+// import { v4 as uuidv4 } from 'uuid';
+
+// const BASE_URL = 'http://127.0.0.1:8000/api/notes';
+
+// const getOrCreateDeviceId = () => {
+//   let deviceId = localStorage.getItem('device_id');
+//   if (!deviceId) {
+//     deviceId = uuidv4();
+//     localStorage.setItem('device_id', deviceId);
+//   }
+//   return deviceId;
+// };
+
+// const NotesPage = () => {
+//   const { id } = useParams(); // Use useParams hook to get route parameters
+//   let [note, setNote] = useState(null);
+  
+//   useEffect(() => {
+//     getNotes();
+//   }, [id]);
+
+//   const getNotes = async () => {
+//     if (id === 'new') return;
+//     const deviceId = getOrCreateDeviceId();
+//     let response = await fetch(`${BASE_URL}/${id}`, {
+//       headers: {
+//         'X-Device-ID': deviceId
+//       }
+//     });
+//     let data = await response.json();
+//     setNote(data);
+//   };
+
+//   const updateNote = async () => {
+//     const deviceId = getOrCreateDeviceId();
+//     await fetch(`${BASE_URL}/${id}/`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'X-Device-ID': deviceId
+//       },
+//       body: JSON.stringify(note)
+//     });
+//   };
+
+//   const createNote = async () => {
+//     const deviceId = getOrCreateDeviceId();
+//     await fetch(`${BASE_URL}/`, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'X-Device-ID': deviceId
+//       },
+//       body: JSON.stringify(note)
+//     });
+//   };
+
+//   const deleteNote = async () => {
+//     const deviceId = getOrCreateDeviceId();
+//     await fetch(`${BASE_URL}/${id}/`, {
+//       method: 'DELETE',
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'X-Device-ID': deviceId
+//       }
+//     });
+//     window.history.back();
+//   };
+
+//   const handleSubmit = () => {
+//     if (id !== 'new' && !note.body) {
+//       deleteNote();
+//     } else if (id !== 'new') {
+//       updateNote();
+//     } else if (id === 'new' && note !== null) {
+//       createNote();
+//     }
+//     window.history.back();
+//   };
+
+//   return (
+//     <div className='note'>
+//       <div className='note-header'>
+//         <h3>
+//           <ArrowLeft onClick={handleSubmit} />
+//         </h3>
+//         {id !== 'new' ? (
+//           <button onClick={deleteNote}>Delete</button>
+//         ) : (
+//           <button onClick={handleSubmit}>Done</button>
+//         )}
+//       </div>
+//       <textarea onChange={(e) => { setNote({ ...note, 'body': e.target.value }) }} value={note?.body}>
+//       </textarea>
+//     </div>
+//   );
+// };
+
+// export default NotesPage;
+
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import {ReactComponent as ArrowLeft} from '../assets/arrow-left.svg'
 
-const BASE_URL = 'https://myapi-x4jf.onrender.com/api/notes';
+const BASE_URL = 'https://efeoghene.pythonanywhere.com/api/notes';
 
-
+// const BASE_URL = 'http://127.0.0.1:8000/api/notes';
 const NotesPage = () => {
    
         const { id } = useParams(); // Use useParams hook to get route parameters
