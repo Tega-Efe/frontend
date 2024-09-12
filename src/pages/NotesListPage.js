@@ -3,7 +3,7 @@ import ListItem from '../components/ListItem';
 import AddButton from '../components/AddButton';
 import { v4 as uuidv4 } from 'uuid';
 
-const BASE_URL = 'https://efeoghene.pythonanywhere.com/api/notes';
+const BASE_URL = 'https://efeoghene.pythonanywhere.com/api/notes/';
 
 const getOrCreateDeviceId = () => {
   let deviceId = localStorage.getItem('device_id');

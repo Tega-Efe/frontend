@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ReactComponent as ArrowLeft } from '../assets/arrow-left.svg';
 import { v4 as uuidv4 } from 'uuid';
 
-const BASE_URL = 'https://efeoghene.pythonanywhere.com/api/notes';
+const BASE_URL = 'https://efeoghene.pythonanywhere.com/api/notes/';
 
 const getOrCreateDeviceId = () => {
   let deviceId = localStorage.getItem('device_id');
@@ -56,6 +56,7 @@ const NotesPage = () => {
       },
       body: JSON.stringify(note)
     });
+    console.log('note created', note)
   };
 
   const deleteNote = async () => {
@@ -77,6 +78,7 @@ const NotesPage = () => {
       updateNote();
     } else if (id === 'new' && note !== null) {
       createNote();
+      console.log("note created")
     }
     window.history.back();
   };
